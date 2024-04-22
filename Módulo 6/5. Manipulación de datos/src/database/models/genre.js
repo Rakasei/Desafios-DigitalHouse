@@ -1,3 +1,5 @@
+const { underscoredIf } = require("sequelize/lib/utils");
+
 module.exports = (sequelize, DataTypes) => {
   const alias = "Genre";
   const cols = {

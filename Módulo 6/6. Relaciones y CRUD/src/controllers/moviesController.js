@@ -19,7 +19,7 @@ module.exports = {
 
   detail: (req,res) => {
     const {id} = req.params
-    db.Movie.findByPk(id)
+    db.Movie.findByPk(id, {include : ["genre"] })
     .then((movie) => {
       res.render("moviesDetail", {
         movie
@@ -77,7 +77,8 @@ module.exports = {
   },
   //Aqui debemos modificar y completar lo necesario para trabajar con el CRUD
     add: function (req, res) {
-        res.render("moviesAdd")  
+        db.Genre.findAll()
+          .then(genres => res.render("moviesAdd", {genres})) 
     },
     create: function (req, res) {
       db.Movie.create({
@@ -85,7 +86,8 @@ module.exports = {
           rating : req.body.rating,
           awards : req.body.awards,
           release_date : req.body.release_date,
-          length : req.body.length
+          length : req.body.length,
+          genre_id : req.body.genre_id
       })
       .then(() => {
           res.redirect("/movies");
@@ -95,15 +97,23 @@ module.exports = {
           res.status(500).send("Error al crear la película");
       });
   },
-    edit: function(req, res) {
-      db.Movie.findByPk(req.params.id)
-        .then(movie => res.render("moviesEdit", {movie}))
-    },
+  edit: function(req, res) {
+    Promise.all([
+        db.Movie.findByPk(req.params.id,  {include : ["genre"] }) ,
+        db.Genre.findAll()
+    ])
+    .then(([movie, genres]) => {
+        res.render("moviesEdit", { movie, genres });
+    })
+    .catch(err => {
+        res.send(err.message);
+    });
+},
     update: function (req,res) {
       const { id } = req.params;
-      const { title, rating, awards, release_date, length } = req.body;
+      const { title, rating, awards, release_date, length, genre_id } = req.body;
       db.Movie.update(
-        { title, rating, awards, release_date, length },
+        { title, rating, awards, release_date, length, genre_id },
         { where: { id: id } }
     )
     .then(() => {

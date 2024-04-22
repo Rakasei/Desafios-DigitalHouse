@@ -1,7 +1,7 @@
 const { underscoredIf } = require("sequelize/lib/utils");
 
 module.exports = (sequelize, DataTypes) => {
-  const alias = "Movie";
+  const alias = "Actor";
   const cols = {
     id: {
       type: DataTypes.INTEGER,
@@ -9,30 +9,24 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       autoIncrement: true,
     },
-    title: {
+    first_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    rating: {
-      type: DataTypes.DECIMAL(3, 1),
+    last_name: {
+      type: DataTypes.STRING
     },
-    awards: {
+    favorite_movie_id: {
       type: DataTypes.INTEGER,
-    },
-    release_date: {
-      type: DataTypes.DATE,
-    },
-    length: {
-      type: DataTypes.INTEGER,
-    },
+    }
   };
 
   const config = {
     timestamps: true,
-    tableName: "movies",
+    tableName: "actors",
     underscored: true
   };
 
-  const Movie = sequelize.define(alias, cols, config);
-  return Movie;
+  const Actor = sequelize.define(alias, cols, config);
+  return Actor;
 };

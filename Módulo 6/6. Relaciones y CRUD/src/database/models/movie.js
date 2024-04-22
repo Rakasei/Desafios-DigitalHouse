@@ -1,4 +1,5 @@
 const { underscoredIf } = require("sequelize/lib/utils");
+const Genre = require("./genre.js"); // Importa el modelo Genre
 
 module.exports = (sequelize, DataTypes) => {
   const alias = "Movie";
@@ -34,5 +35,21 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   const Movie = sequelize.define(alias, cols, config);
+  
+  // Define la asociación dentro del método associate
+  Movie.associate = (models) => {{
+    Movie.belongsTo(models.Genre, {
+      as: "genre",
+      foreignKey: "genre_id"
+    }),
+    Movie.belongsToMany(models.Actor, {
+      through: 'actor_movie', 
+      as: 'actors', 
+      foreignKey: 'movie_id', 
+      otherKey: 'actor_id' 
+    })}
+
+  };
+
   return Movie;
 };
