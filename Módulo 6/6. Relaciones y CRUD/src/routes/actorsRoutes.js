@@ -10,5 +10,8 @@ router.post("/actors/add", actorsController.create)
 router.get("/actors/delete/:id", actorsController.delete)
 router.post("/actors/delete/:id", actorsController.destroy)
 
+router.get("/actors/edit/:id", actorsController.edit)
+router.post("/actors/edit/:id", actorsController.update)
+
 
 module.exports = router;

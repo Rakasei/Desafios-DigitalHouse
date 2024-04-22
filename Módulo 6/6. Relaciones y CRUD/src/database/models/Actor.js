@@ -16,6 +16,9 @@ module.exports = (sequelize, DataTypes) => {
     last_name: {
       type: DataTypes.STRING
     },
+    rating : {
+      type: DataTypes.DECIMAL(3, 1)
+    },
     favorite_movie_id: {
       type: DataTypes.INTEGER,
     }

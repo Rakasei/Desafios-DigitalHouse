@@ -15,28 +15,36 @@
     <h1 class="titulo">Actor a editar: <%= actor.first_name %>
     </h1>
     <section class="formulario">
-        <form action="/actors/edit/<% actor.id %>" method="POST">
-            <label for="first_name">First name </label>
-            <p><input type="text" name="first_name" value="<% actor.first_name %>" required></p>
-            <label for="last_name">Last name </label>
-            <p><input type="text" name="last_name" value="<% actor.last_name %>" required> </p>
-            <label for="rating">Rating </label>
-            <p><input type="number" name="rating" value="<% actor.rating %>" required></p>
-            <label for="favorite_movie_id">Favorite Movie:</label>
+        <form action="/actors/edit/<%= actor.id %>" method="POST">
 
+            <label for="first_name">First name </label>
+            <p><input type="text" name="first_name" value="<%= actor.first_name %>" required></p>
+
+            <label for="last_name">Last name </label>
+            <p><input type="text" name="last_name" value="<%= actor.last_name %>" required></p>
+
+            <label for="rating">Rating </label>
+            <p><input type="number" name="rating" value="<%= actor.rating %>" required></p>
+
+            <label for="favorite_movie_id">Favorite Movie:</label>
             <select id="favorite_movie_id" name="favorite_movie_id" required>
                 <% for(let i=0; i < movies.length; i++) { %>
-                    <% if(actor.favorite_movie && actor.movie.id===genres[i].id) { %>
-                        <option value="<%= genres[i].id %>" selected>
-                            <%= genres[i].name %>
+                    <% if(actor.favorite_movie && actor.favorite_movie.id===movies[i].id) { %>
+                        <option value="<%= movies[i].id %>" selected>
+                            <%= movies[i].title %>
                         </option>
                         <% } else { %>
-                            <option value="<%= genres[i].id %>">
-                                <%= genres[i].name %>
+                            <option value="<%= movies[i].id %>">
+                                <%= movies[i].title %>
                             </option>
                             <% } %>
                                 <% } %>
             </select>
+            <button type="submit">Guardar cambios</button>
+        </form>
+        
+    </section>
+    <a class="botonVolver" href="/actors">Listado de Actores</a>
 </body>
 
 </html>

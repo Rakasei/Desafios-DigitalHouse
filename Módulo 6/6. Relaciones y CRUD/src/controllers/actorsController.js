@@ -46,5 +46,28 @@ module.exports = {
     db.Actor 
       .destroy({where : {id : req.params.id}})
         .then(() => res.redirect("/actors"))
-  }
-};
+  },
+  edit: (req, res)=> {
+    Promise.all([
+        db.Actor.findByPk(req.params.id,  {include : ["favorite_movie"] }) ,
+        db.Movie.findAll()
+    ])
+    .then(([actor, movies]) => {
+        res.render("actorsEdit", { actor, movies });
+    })
+    .catch(err => {
+        res.send(err.message);
+    });
+  },
+
+  update: (req,res) => {
+      const { id } = req.params;
+      const { first_name, last_name, rating, favorite_movie_id } = req.body;
+      db.Actor.update(
+        { first_name, last_name, rating, favorite_movie_id },
+        { where: { id: id } }
+    )
+    .then(() => {
+        res.redirect("/actors");
+  })
+}}

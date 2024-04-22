@@ -22,15 +22,22 @@
     <p>FULL NAME: <%= actor.first_name %>
             <%= actor.last_name %>
     </p>
-    <p>FAVORITE MOVIE: <% actor.favorite_movie %>
+    <p>RATING: <%= actor.rating %></p>
+    
+    <p>FAVORITE MOVIE: <%= actor.favorite_movie.title %>
     </p>
+
     <h2>MOVIES</h2>
-    <ul>
+    <ul> <% if (actor.movies){ %>
         <% actor.movies.forEach(movie=> { %>
             <li>
                 <%= movie.title %>
             </li>
             <% }); %>
+            <% } else{ %>
+                <br>
+            <p>Este actor no tiene ninguna película registrada</p>
+            <% } %>
     </ul>
     <h2>Favorite Movie</h2>
     <% if (actor.favorite_movie) { %>
@@ -40,8 +47,11 @@
         <% } else { %>
             <p>No favorite movie</p>
             <% } %>
+            <br>
             <a href="/actors/edit/<%= actor.id %>">Editar Actor</a>
             <a href="/actors/delete/<%= actor.id %>">Eliminar Actor</a>
+            <br>
+            <a class="botonVolver" href="/actors">Listado de Actores</a>
 </body>
 
 </html>
