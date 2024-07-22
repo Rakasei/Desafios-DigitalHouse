@@ -1,0 +1,98 @@
+[
+    {
+        "id": 1,
+        "marca": "Fierce",
+        "modelo": "FM18SI29AM211",
+        "rodado": 29,
+        "anio": 2021,
+        "color": "Negro",
+        "peso": 15,
+        "tipo": "Montañera",
+        "precio": 75000,
+        "vendida": "no"
+    },
+    {
+        "id": 2,
+        "marca": "Shifter",
+        "modelo": "FM18F29AM210",
+        "rodado": 26,
+        "anio": 2020,
+        "color": "Rojo",
+        "peso": 16,
+        "tipo": "Paseo",
+        "precio": 60000,
+        "vendida": "si"
+    },
+    {
+        "id": 3,
+        "marca": "Olmo",
+        "modelo": "Regal",
+        "rodado": 28,
+        "anio": 2022,
+        "color": "Verde",
+        "peso": 13,
+        "tipo": "Retro",
+        "precio": 80000,
+        "vendida": "no"
+    },
+    {
+        "id": 4,
+        "marca": "Battle",
+        "modelo": "Sunshine",
+        "rodado": 29,
+        "anio": 2019,
+        "color": "Celeste",
+        "peso": 17,
+        "tipo": "Triatlón",
+        "precio": 90000,
+        "vendida": "si"
+    },
+    {
+        "id": 5,
+        "marca": "TopMega",
+        "modelo": "Techno",
+        "rodado": 26,
+        "anio": 2021,
+        "color": "Amarillo",
+        "peso": 14,
+        "tipo": "Montañera",
+        "precio": 70000,
+        "vendida": "no"
+    },
+    {
+        "id": 6,
+        "marca": "SLP",
+        "modelo": "Ruta",
+        "rodado": 28,
+        "anio": 2020,
+        "color": "Gris",
+        "peso": 15,
+        "tipo": "Triatlón",
+        "precio": 85000,
+        "vendida": "si"
+    },
+    {
+        "id": 7,
+        "marca": "Halley",
+        "modelo": "FM18SI29AM212",
+        "rodado": 29,
+        "anio": 2019,
+        "color": "Rosa",
+        "peso": 16,
+        "tipo": "Paseo",
+        "precio": 65000,
+        "vendida": "no"
+    },
+    {
+        "id": 8,
+        "marca": "Fixie",
+        "modelo": "FM18F29AM213",
+        "rodado": 16,
+        "anio": 2022,
+        "color": "Naranja",
+        "peso": 13,
+        "tipo": "Retro",
+        "precio": 72000,
+        "vendida": "si"
+    }
+]
