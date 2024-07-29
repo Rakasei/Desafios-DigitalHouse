@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import noPoster from '../assets/images/no-image.png';
 
 const SearchMovies = () => {
-	const apiKey = 'a21491b3';
+	const apiKey = "a21491b3";
 
 	const [searchTerm, setSearchTerm] = useState('');
 	const [movieList, setMovieList] = useState([]);
@@ -16,7 +16,7 @@ const SearchMovies = () => {
 			try {
 				const response = await fetch(url);
 				const result = await response.json();
-				if (result.Response === 'True') {
+				if (result.Response === "True") {
 					setMovieList(result.Search || []);
 				} else {
 					setMovieList([]);

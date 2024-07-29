@@ -4,6 +4,7 @@ window.onload = () => {
 
     const movieId = location.href.split('/')[3]
     fetch(`http://localhost:3001/api/movies/${movieId}`)
+    
         .then(response => response.json())
         .then(movie => {
             console.log(movie.data)
@@ -13,9 +14,8 @@ window.onload = () => {
             document.getElementById('release_date').value = movie.data.release_date;
             document.getElementById('length').value = movie.data.length;
         })
-        .catch(error => console.error('Error al cargar la película:', error));
 
-        //!UPDATE
+
 
         document.getElementById('editar').addEventListener('click', () => {
             const title = document.getElementById("title").value;
@@ -40,11 +40,8 @@ window.onload = () => {
                 body: JSON.stringify(data)
             })
             .then(response => response.json())
-            .then(result => {
-                console.log('Película actualizada:', result);
-                alert('Película actualizada con éxito');
-            })
-            .catch(error => console.error('Error al actualizar la película:', error));
+            .then(result => { alert("Película actualizada") })
+      
         });
 
 };

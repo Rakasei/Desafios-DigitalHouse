@@ -3,7 +3,7 @@ window.onload = () => {
   const container = document.querySelector(".container");
   const favoritesButton = document.getElementById("favoritesButton");
 
-  // Mostrar el botón de favoritos si hay películas en el storage
+ 
   if (localStorage.getItem('favoriteMovies')) {
       favoritesButton.style.display = 'block';
   }
@@ -12,16 +12,13 @@ window.onload = () => {
       window.location.href = 'favoritas';
   });
 
-  fetch('http://localhost:3001/api/movies')
+  fetch("http://localhost:3001/api/movies")
   .then(response => {
-      if (!response.ok) {
-          throw new Error('Network response was not ok ' + response.statusText);
-      }
-      return response.json();
+      return response.json()
   })
   .then(peliculas => {
-      let data = peliculas.data;
-      console.log(data); // Agregar un log para verificar los datos recibidos
+    
+      let data = peliculas.data
 
       data.forEach((movie) => {
           const card = document.createElement("div");

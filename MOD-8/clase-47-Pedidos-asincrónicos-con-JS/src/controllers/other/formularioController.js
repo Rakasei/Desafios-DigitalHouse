@@ -1,3 +1,3 @@
 module.exports = (req, res) => {
-    return res.render('other/formulario')
+    return res.render("other/formulario")
 }
